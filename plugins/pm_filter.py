@@ -439,6 +439,19 @@ async def cb_handler(client: Client, query: CallbackQuery):
             alert = alert.replace("\\n", "\n").replace("\\t", "\t")
             await query.answer(alert, show_alert=True)
     if query.data.startswith("file"):
+        clicked = query.from_user.id
+
+        try:
+
+            typed = query.message.reply_to_message.from_user.id
+
+        except:
+
+            typed = query.from_user.id
+
+            pass
+
+        if int(clicked) == typed:
         ident, file_id = query.data.split("#")
         files_ = await get_file_details(file_id)
         if not files_:
