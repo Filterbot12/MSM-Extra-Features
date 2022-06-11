@@ -172,6 +172,15 @@ async def short(link):
                 shorten_urls += f"\n**GPLinks.in :-** {url}"
     except Exception as error:
         print(f"GPLink error :- {error}")
+
+    # Adrinolinks.in shorten
+    if ADRINOLINKS_API:
+        try:
+            s = Shortener(api_key=ADRINOLINKS_API)
+            url = s.Adrinolinks.in.short(link)
+            shorten_urls += f"\n**Adrinolinks.in :-** {url}"
+        except Exception as error:
+            print(f"Adrinolinks.in error :- {error}")
     
     # Send the text
     try:
